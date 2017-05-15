@@ -93,7 +93,7 @@ footer {
 	width: 100%;
 }
 
-footer h2 {
+footer h1 {
 	color: #00ccff;	
 }
 
@@ -156,4 +156,10 @@ p.split {
 a {
 	color: #ffffff;
 	text-decoration: none;
+}
+
+h1 {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 1.17em;
 }
