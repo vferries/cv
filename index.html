@@ -110,12 +110,12 @@ var data = {
 			{name: "Python", level: 3},
 			{name: "Kotlin", level: 3}
 		],
-		tags: ["Java", "Java EE", "Spring 5", "Android", "Kotlin", "JavaScript (Angular, ES2015)", "TypeScript", "Dart", "Polymer", "Python", "Ruby", "Haskell", "bash", "..."],
-		meetups: ["Toulouse JUG", "GDG Toulouse", "Software Craftsmanship", "Toulouse JS"],
-		activities: ["Cirque (équilibre, mât chinois, jonglage)", "Plongée (N2)", "Escalade", "Randonnées", "Ski", "Slackline", "Jeux de société", "Musique", "Lecture", "Moto"],
+		tags: ["Kotlin", "Android", "Spring 5", "Angular", "VueJS", "Java", "Java EE", "TypeScript", "Dart", "Python", "Ruby", "Haskell", "bash", "..."],
+		meetups: ["DevFest Toulouse", "Toulouse JUG", "GDG Toulouse", "Software Crafters Toulouse"],
+		activities: ["Cirque (équilibre, mât chinois, jonglage)", "Plongée (N2)", "Escalade", "Randonnées", "Ski", "Slackline", "Jeux de société", "Lecture", "Moto"],
 		various: "Nombreux MOOCS tels que Crytographie, Data Science, Big Data, NoSQL, la programmation fonctionnelle...<br/><br/>Katas réguliers  sous CodeWars, exercism, CheckIO.<br/><br/>Deux applications personnelles sur le store : Maze Maker Duel (Android) et Fleurs du Sud (Ionic/AngularJS)",
 		title: "Développeur logiciel indépendant",
-		description: "Passionné de technique, en particulier dans l'univers Java, je cherche à m'orienter vers un profil d'expert technique et de formateur (Java, Android, méthodologies agiles et software craftsmanship).<br/><br/>Spécialités : Conception et développement Java, Java EE, Android et JavaScript.<br/>Veille technologique personnelle constante (projets personnels sur des technologies récentes, engagement dans le milieu associatif au Toulouse JUG et Software Craftmanship Toulouse entre autres)",
+		description: "Passionné de technique, je cherche à m'orienter vers un profil d'expert technique et de formateur (Java, Android, méthodologies agiles et software craftsmanship).<br/><br/>Spécialités : Conception et développement Kotlin, Java, Android et JavaScript.<br/>Veille technologique personnelle constante (projets personnels sur des technologies récentes, engagement dans le milieu associatif au Toulouse JUG et Software Craftmanship Toulouse entre autres)",
 		imgUrl: "images/photo.jpg"
 	},
 	experiences: [
@@ -123,13 +123,18 @@ var data = {
 			dateStart: "2016",
 			dateEnd: "aujourd'hui",
 			title: "Indépendant En Veille",
-			description: "Désormais freelance, je recherche des missions techniques, ou dans des équipes stimulantes.<br/><br/>Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular 6</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>Développement en <strong>Angular 6</strong> et <strong>Spring 5</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring 5, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS.<br/><br/>Chez Airbus:<br/>Passation de compétences sur les projets gérés précédemment."
+			description: "Désormais freelance, je recherche des missions techniques, ou dans des équipes stimulantes.<br/><br/>" +
+					"Chez Renault :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
+					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular 6</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
+					"Développement en <strong>Angular 6</strong> et <strong>Spring 5</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring 5, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
+					"Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS.<br/><br/>" +
+					"Chez Airbus:<br/>Passation de compétences sur les projets gérés précédemment."
 		},
 		{
 			dateStart: "2016",
-			dateEnd: "2018",
+			dateEnd: "2019",
 			title: "DevFest Toulouse",
-			description: "Membre fondateur du DevFest Toulouse. Une conférence d'une journée avec plusieurs centaines de participants."
+			description: "Membre fondateur du DevFest Toulouse. Une conférence d'une journée avec 1000 participants."
 		},
 		{
 			dateStart: "2014",
@@ -191,7 +196,7 @@ function fillDocument() {
 	data.personal.technos = data.personal.technos.map(function(t) { return {name: t.name, level: [...Array(t.level).keys()]} })
 	data.trim = function () {
     	return function (text, render) {
-      		return render(text).replace(/(,\s*$)/g, ''); // trim trailing comma and whitespace 
+      		return render(text).replace(/(,\s*$)/g, ''); // trim trailing comma and whitespace
     	}
 	}
 	var template = document.getElementById('headerTemplate').innerHTML
