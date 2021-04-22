@@ -84,7 +84,8 @@
 	<h1>Social</h1>
 	<span><a href="https://twitter.com/{{social.twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i> https://twitter.com/{{social.twitter}}</a></span><br/><br/>
 	<span><a href="https://github.com/{{social.github}}"><i class="fa fa-github" aria-hidden="true"></i> https://github.com/{{social.github}}</a></span><br/><br/>
-	<span><a href="https://linkedin.com/in/{{social.linkedin}}"><i class="fa fa-linkedin" aria-hidden="true"></i> https://linkedin.com/in/{{social.linkedin}}</a></span>
+	<span><a href="https://linkedin.com/in/{{social.linkedin}}"><i class="fa fa-linkedin" aria-hidden="true"></i> https://linkedin.com/in/{{social.linkedin}}</a></span><br/><br/>
+	<span><a href="https://twitch.tv/{{social.twitch}}"><i class="fa fa-twitch" aria-hidden="true"></i> https://twitch.tv/{{social.twitch}}</a></span>
 </div>
 <section>
 	<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
@@ -105,10 +106,10 @@ var data = {
 		languages: ["Français", "Anglais"],
 		technos: [
 			{name: "Java", level: 5},
-			{name: "android", level: 4},
-			{name: "JS", level: 5},
+			{name: "Android", level: 4},
+			{name: "JS/TS", level: 5},
 			{name: "Python", level: 3},
-			{name: "Kotlin", level: 3}
+			{name: "Kotlin", level: 4}
 		],
 		tags: ["Kotlin", "Android", "Spring 5", "Angular", "VueJS", "Java", "Java EE", "TypeScript", "Dart", "Python", "Ruby", "Haskell", "bash", "..."],
 		meetups: ["DevFest Toulouse", "Toulouse JUG", "GDG Toulouse", "Software Crafters Toulouse"],
@@ -124,6 +125,7 @@ var data = {
 			dateEnd: "aujourd'hui",
 			title: "Indépendant En Veille",
 			description: "Désormais freelance, je recherche des missions techniques, ou dans des équipes stimulantes.<br/><br/>" +
+					"Chez Pros :<br/>Développement d'une application SaaS dans le cloud Azure.<br/><strong>Java EE 7</strong>, micro services, <strong>Kubernetes</strong> (K8S), helm, kafka.<br/><br/>" +
 					"Chez Renault :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
 					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular 6</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
 					"Développement en <strong>Angular 6</strong> et <strong>Spring 5</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring 5, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
@@ -163,6 +165,11 @@ var data = {
 	],
 	formations: [
 		{
+			date: "2021",
+			title: "OCP Java SE 11 Developer",
+			description: "Certification Oracle"
+		},
+		{
 			date: "2007",
 			title: "Master 2 Génie Logiciel et Répartition",
 			description: "à l'Université Paul Sabatier de Toulouse"
@@ -181,7 +188,8 @@ var data = {
 	social: {
 		twitter: "VincentFERRIES",
 		github: "vferries",
-		linkedin: "vferries"
+		linkedin: "vferries",
+		twitch: "EnVeilleCode"
 	},
 	contact: {
 		name: "EURL En Veille",
