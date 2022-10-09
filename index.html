@@ -53,6 +53,12 @@
 	<p class="split"><span class="left">Langues</span><span class="right">{{#trim}}{{#personal.languages}}{{.}}, {{/personal.languages}}{{/trim}}</p>
 </section>
 <section>
+	<h1 class="certifications"><i class="material-icons">workspace_premium</i> Certifications</h1>
+	{{#personal.certifications}}
+		<img class="badge" src="images/{{badge}}"/>{{name}}<br/><br/>
+	{{/personal.certifications}}
+</section>
+<section>
 	<h1 class="technos"><i class="material-icons">whatshot</i> Technos</h1>
 	{{#personal.technos}}
 		<p class="split"><span class="left">{{name}}</span><span class="right">{{#level}}<i class="material-icons">star</i>{{/level}}</span></p>
@@ -111,6 +117,11 @@ var data = {
 			{name: "Python", level: 3},
 			{name: "Kotlin", level: 4}
 		],
+		certifications: [
+			{name: "CKA", badge: "cka.png"},
+			{name: "CKAD", badge: "ckad.png"},
+			{name: "Oracle Java SE 11", badge: "javase11.png"},
+		],
 		tags: ["Kotlin", "Android", "Spring 5", "Angular", "VueJS", "Java", "Java EE", "TypeScript", "Dart", "Python", "Ruby", "Haskell", "bash", "..."],
 		meetups: ["DevFest Toulouse", "Toulouse JUG", "GDG Toulouse", "Software Crafters Toulouse"],
 		activities: ["Cirque (équilibre, mât chinois, jonglage)", "Plongée (N2)", "Escalade", "Randonnées", "Ski", "Slackline", "Jeux de société", "Lecture", "Moto"],
@@ -125,10 +136,10 @@ var data = {
 			dateEnd: "aujourd'hui",
 			title: "Indépendant En Veille",
 			description: "Désormais freelance, je recherche des missions techniques, ou dans des équipes stimulantes.<br/><br/>" +
-					"Chez Pros :<br/>Développement d'une application SaaS dans le cloud Azure.<br/><strong>Java EE 7</strong>, micro services, <strong>Kubernetes</strong> (K8S), helm, kafka.<br/><br/>" +
-					"Chez Renault :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
-					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular 6</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
-					"Développement en <strong>Angular 6</strong> et <strong>Spring 5</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring 5, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
+					"Chez Pros :<br/>Développement <strong>Java EE</strong>, micro services, <strong>Kubernetes</strong> (K8S), helm, kafka et zookeeper.<br/>Architecture CQRS et event sourcing. Observabilité dans le cloud Azure, AppInsight, Prometheus, Grafana.<br/><br/>" +
+					"Chez Renault :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. eXtreme Programming, <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
+					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
+					"Développement en <strong>Angular</strong> et <strong>Spring</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
 					"Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS.<br/><br/>" +
 					"Chez Airbus:<br/>Passation de compétences sur les projets gérés précédemment."
 		},
@@ -196,7 +207,7 @@ var data = {
 		address: "29 chemin de Nicol<br/>Bât C, Appt 4, 31200 TOULOUSE",
 		email: "vincent.ferries@gmail.com",
 		phone: "06 62 11 74 84",
-		web: "http://enveille.info"
+		web: "https://enveille.info"
 	},
 }
 
