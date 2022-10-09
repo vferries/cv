@@ -64,10 +64,10 @@
 		<p class="split"><span class="left">{{name}}</span><span class="right">{{#level}}<i class="material-icons">star</i>{{/level}}</span></p>
 	{{/personal.technos}}
 </section>
-<section>
+<!--<section>
 	<h1 class="tags"><i class="material-icons">lightbulb_outline</i> Libs / Langs</h1>
 	{{#trim}}{{#personal.tags}}{{.}}, {{/personal.tags}}{{/trim}}
-</section>
+</section>-->
 <section>
 	<h1 class="tags"><i class="material-icons">group</i> Meetups</h1>
 	<ul>
@@ -140,8 +140,7 @@ var data = {
 					"Chez Renault :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. eXtreme Programming, <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
 					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
 					"Développement en <strong>Angular</strong> et <strong>Spring</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
-					"Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS.<br/><br/>" +
-					"Chez Airbus:<br/>Passation de compétences sur les projets gérés précédemment."
+					"Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS."
 		},
 		{
 			dateStart: "2016",
@@ -159,22 +158,27 @@ var data = {
 			dateStart: "2011",
 			dateEnd: "2015",
 			title: "Génigraph puis Softeam (rachat)",
-			description: "Développement d'une application de géolocalisation sous <strong>Android</strong> pour le compte d'ERDF. Représentation de l'intégralité de leur réseau électrique. Prise en compte des fragments, compatibilité, cartographie offline basée sur Open Street Map, overlays, problématiques de gros volumes de données, de cryptographie et de traitements lourds sur appareil mobile. Création d'un fichier binaire avec table d'index des blocs fonction de leur position géographique.<br/><br/>Airbus et Eurocopter :<br/>Reprise et refonte d'une application Swing basée sur des ontologies (OWL et RDF) pour modéliser les interactions entre un pilote et le cockpit.<br/>Développement d'une nouvelle version de cette application qui permet d'éditer les graphes en mode collaboratif. Technologies <strong>Java EE 7</strong> (SSE et websockets) et <strong>ExtJS</strong>. Application des principes CQRS, représentation cockpit en 3D avec BabylonJS, graphiques réalisés avec D3.<br/>Adaptation de cette même application aux contraintes Airbus, notamment réécriture de tout le backend sous Spring 4, changement de la base de données de Postgres à SQL Server. La transition a été simplifiée par l'utilisation d'un back-end REST pur complètement Stateless, la partie client n'a pas nécessité la moindre modification.<br/><br/>Application de prise de notes par les examinateurs dans les cockpits sous <strong>AngularJS</strong> (lancement et suivi) pour Airbus. Reconnaissance d'écriture.<br/><br/>Mission <strong>QT C++</strong> sur des widgets tactiles multipoint pour Airbus. Traitement des résultats en <strong>Python</strong>.<br/><br/>Mise en place de l'architecture d'une application bassée sur <strong>GWT</strong> pour le compte de Madic. Formation des équipes et lancement projet.<br/><br/>Formations données pour le compte de <strong>JBoss</strong> sur <strong>Java EE 6</strong>."
+			description: "Développement d'une application de géolocalisation sous <strong>Android</strong> pour le compte d'ERDF. Représentation de l'intégralité de leur réseau électrique. Cartographie offline basée sur Open Street Map, overlays, problématiques de gros volumes de données, de cryptographie et de traitements lourds sur appareil mobile. Création d'un fichier binaire avec table d'index des blocs fonction de leur position géographique.<br/><br/>Airbus et Eurocopter :<br/>Reprise et refonte d'une application Swing basée sur des ontologies (OWL et RDF) pour modéliser les interactions entre un pilote et le cockpit.<br/>Développement d'une nouvelle version de cette application qui permet d'éditer les graphes en mode collaboratif. Technologies <strong>Java EE 7</strong> (SSE et websockets) et <strong>ExtJS</strong>. Application des principes CQRS, représentation cockpit en 3D avec BabylonJS, graphiques réalisés avec D3.<br/>Adaptation de cette même application aux contraintes Airbus, notamment réécriture de tout le backend sous Spring 4, changement de la base de données de Postgres à SQL Server.<br/><br/>Application de prise de notes par les examinateurs dans les cockpits sous <strong>AngularJS</strong> (lancement et suivi) pour Airbus. Reconnaissance d'écriture.<br/><br/>Mise en place de l'architecture d'une application bassée sur <strong>GWT</strong> pour le compte de Madic. Formation des équipes et lancement projet.<br/><br/>Formations données pour le compte de <strong>JBoss</strong> sur <strong>Java EE 6</strong>."
 		},
 		{
-			dateStart: "juin 2007",
-			dateEnd: "juin 2011",
+			dateStart: "2007",
+			dateEnd: "2011",
 			title: "CELAD",
 			description: "De janvier 2009 à juin 2011 :<br/>Développement de sites web à destination du grand public pour la gestion des tickets restaurant en Java EE avec le framework <strong>Seam</strong> (JSF, RichFaces, EJB3, JPA, Hibernate, Ajax...). Rédaction des spécifications détaillées et développement de la solution en équipe de 7 personnes.<br/>Développement <strong>Java EE</strong> dans un framework <strong>Struts MVC2</strong> pour Natixis DML (domaine bancaire).<br/><br/>D'avril à décembre 2008 : Réalisation d'une interface <strong>Python</strong> avec WxPython pour une librairie écrite en C++.<br/>Traitements massifs de résultats de simulations aérospatiales pour le compte de la société Latécoère.<br/><br/>Mars 2008 : Réalisation d'un forum répondant aux besoins de la société @Doc Solutions en Java. Templating Freemarker. Réponse à un appel d'offre, recueil des besoins client et réalisation de la solution.<br/><br/>De juin 2007 à février 2008 : Conception et développement d'applications <strong>J2EE</strong> basées sur Struts, Spring, Swing, Eclipse RCP pour le compte du MIPIH (Midi Pyrénées Informatique Hospitalière). Modélisation UML et génération du squelette du code d'une application SOA. Réalisation d'un prototype de référentiel pour le moteur de règles Drools."
 		},
 		{
-			dateStart: "octobre 2006",
-			dateEnd: "juin 2007",
-			title: "Eurecia stage en alternance",
+			dateStart: "2006",
+			dateEnd: "2007",
+			title: "Eurecia alternance",
 			description: "Développement d'une plateforme multiservices en Java EE pour une gestion simplifiée des activités de Ressources Humaines.Génération automatique de rapports avec JfreeChart. Développement de la solution et paramétrage d'un cluster de serveurs Jboss avec réplication de sessions."
 		}
 	],
 	formations: [
+		{
+			date: "2022",
+			title: "CKA et CKAD",
+			description: "Certified Kubernetes Administrator et Application Developer"
+		},
 		{
 			date: "2021",
 			title: "OCP Java SE 11 Developer",

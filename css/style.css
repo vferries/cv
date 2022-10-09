@@ -3,14 +3,6 @@ body > div {
 	margin: auto;
 }
 
-@media print {
-  @page { margin: 0; }
-  body > div {
-  	width: auto;
-  	margin: 0.6cm;
-  }
-}
-
 body {
 	-webkit-print-color-adjust: exact;
 	font-family: 'Roboto', sans-serif;
@@ -173,4 +165,34 @@ h1 {
 	margin-top: 5px;
 	margin-bottom: 10px;
 	font-size: 1.17em;
+}
+
+@media print {
+	* {
+		-webkit-transition: none !important;
+		transition: none !important;
+	}
+
+	@page { margin: 6mm 0; }
+
+	body > div {
+		width: auto;
+		margin: 0 6mm;
+	}
+
+	body {
+		font-size: 0.85rem;
+	}
+
+	#jobs li, #formation li {
+		padding-left: 40px;
+	}
+
+	.mission {
+		width: 80px;
+	}
+
+	aside section, footer section {
+		width: 160px;
+	}
 }
