@@ -36,7 +36,8 @@ const data = {
 			description: "Mission via <strong>En Veille</strong>.<br/><br/>" +
 				"Architecte pour l'équipe HMI (~200 développeurs), puis Tech Lead sur des projets futuristes <strong>Android Automotive</strong> en mode task force.<br/>" +
 				"Développement plateforme et système sur <strong>AOSP</strong>. Applications en <strong>Kotlin</strong> avec <strong>Jetpack Compose</strong>.<br/>" +
-				"Méthodologies <strong>Scrum</strong>, <strong>TDD</strong>, <strong>eXtreme Programming</strong>, CI/CD."
+				"Méthodologies <strong>Scrum</strong>, <strong>TDD</strong>, <strong>eXtreme Programming</strong>, CI/CD.<br/>" +
+				"Développement assisté par <strong>IA</strong> avec <strong>OpenCode</strong> (Claude)."
 		},
 		{
 			dateStart: "2020",
