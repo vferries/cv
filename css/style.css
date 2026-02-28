@@ -24,7 +24,7 @@ body {
 
 img {
 	background-color: #ffffff;
-	border: 1px solid #cccccc;
+	border: 1px solid #007DA5;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 	padding: 10px;
 	margin-right: 10px;
@@ -50,7 +50,7 @@ header {
 
 header div {
 	flex: 1;
-	background-color: #2b5d82;
+	background-color: #001B3D;
 	color: #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 	padding: 0px 20px;
@@ -68,7 +68,7 @@ header h1 {
 header h2 {
 	margin: 0;
 	margin-bottom: 15px;
-	color: #00ccff;
+	color: #00F2FF;
 }
 
 header p {
@@ -82,13 +82,13 @@ header p {
 #main section {
 	margin-top: 10px;
 	background-color: #ffffff;
-	border: 1px solid #cccccc;
+	border: 1px solid #007DA5;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 	padding: 10px;
 }
 
 section h1 {
-	color: #00ccff;
+	color: #00F2FF;
 }
 
 aside {
@@ -97,7 +97,7 @@ aside {
 
 aside section {
 	margin-top: 10px;
-	background-color: #2b5d82;
+	background-color: #001B3D;
 	color: #ffffff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 	padding: 10px;
@@ -110,14 +110,14 @@ footer {
 }
 
 footer h1 {
-	color: #00ccff;
+	color: #00F2FF;
 }
 
 footer > div {
 	margin-right: 10px;
 	flex: 1;
 	margin-top: 10px;
-	background-color: #2b5d82;
+	background-color: #001B3D;
 	color: #ffffff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 	padding: 10px;
@@ -125,7 +125,7 @@ footer > div {
 
 footer section {
 	margin-top: 10px;
-	background-color: #2b5d82;
+	background-color: #001B3D;
 	color: #ffffff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
 	padding: 10px;
@@ -144,7 +144,7 @@ footer section {
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	display: flex;
-	border-bottom: 1px solid #eeeeee;
+	border-bottom: 1px solid #007DA5;
 }
 
 #jobs li:last-child, #formation li:last-child {
@@ -201,7 +201,7 @@ h1 {
 @media (hover: hover) {
 	/* Links hover effect */
 	a:hover {
-		color: #00ccff;
+		color: #00F2FF;
 	}
 
 	/* Card hover effects */
@@ -295,7 +295,7 @@ h1 {
 		padding-bottom: 15px;
 		margin-bottom: 10px;
 		background: none;
-		border-bottom: 1px solid #eeeeee;
+		border-bottom: 1px solid #007DA5;
 	}
 
 	#jobs li:last-child, #formation li:last-child {
@@ -510,5 +510,17 @@ h1 {
 	/* Links - keep readable but don't underline */
 	a {
 		text-decoration: none;
+	}
+
+	/* ==========================================
+	   PRINT INK SAVING - Use lighter blue for backgrounds
+	   ========================================== */
+
+	/* Replace Bleu Nuit (#001B3D) with Bleu Médium (#007DA5) for print */
+	header div,
+	aside section,
+	footer > div,
+	footer section {
+		background-color: #007DA5 !important;
 	}
 }
