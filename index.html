@@ -1,249 +1,362 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CV Vincent Ferries</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
-	<script src="js/mustache.min.js"></script>
-	<script id="headerTemplate" type="x-tmpl-mustache">
-<img src="{{imgUrl}}" />
-<div>
-	<h1>{{firstname}} {{lastname}}</h1>
-	<h2>{{title}}</h2>
-	<p>{{{description}}}</p>
-</div>
-	</script>
-	<script id="contentTemplate" type="x-tmpl-mustache">
-<section id="jobs">
-	<h1><i class="material-icons">card_travel</i> Expériences Professionnelles</h1>
-	<ul>
-	{{#experiences}}
-		<li><div class="mission"><strong>{{title}}</strong><br/>{{dateStart}}-{{dateEnd}}</div><div class="description">{{{description}}}</div>
+
+	<!-- Native HTML Templates -->
+	<template id="experienceTemplate">
+		<li>
+			<div class="mission"><strong class="title"></strong><br/><span class="dates"></span></div>
+			<div class="description"></div>
 		</li>
-	{{/experiences}}
-	</ul>
-</section>
-<section id="formation">
-	<h1><i class="material-icons">school</i> Formation</h1>
-	<ul>
-	{{#formations}}
-		<li><div class="mission">{{date}}</div><div class="description"><strong>{{title}}</strong><br/>{{{description}}}</div>
+	</template>
+
+	<template id="formationTemplate">
+		<li>
+			<div class="mission date"></div>
+			<div class="description"><strong class="title"></strong><br/><span class="details"></span></div>
 		</li>
-	{{/formations}}
-	</ul>
-</section>
-	</script>
-	<script id="asideTemplate" type="x-tmpl-mustache">
-<section>
-	<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
-	{{contact.name}}<br/>
-	{{{contact.address}}}<br/>
-	{{contact.email}}<br/>
-	{{contact.phone}}<br/>
-	<a href="{{contact.web}}">{{contact.web}}</a>
-</section>
-<section>
-	<h1 class="perso"><i class="material-icons">person</i> Infos Persos</h1>
-	<p class="split"><span class="left">Prénom</span><span class="right">{{personal.firstname}}</span></p>
-	<p class="split"><span class="left">Nom</span><span class="right">{{personal.lastname}}</p>
-	<p class="split"><span class="left">Anniversaire</span><span class="right">{{personal.birthday}}</p>
-	<p class="split"><span class="left">Nationalité</span><span class="right">{{personal.nationality}}</p>
-	<p class="split"><span class="left">Langues</span><span class="right">{{#trim}}{{#personal.languages}}{{.}}, {{/personal.languages}}{{/trim}}</p>
-</section>
-<section>
-	<h1 class="certifications"><i class="material-icons">workspace_premium</i> Certifications</h1>
-	{{#personal.certifications}}
-		<img class="badge" src="images/{{badge}}"/>{{name}}<br/><br/>
-	{{/personal.certifications}}
-</section>
-<section>
-	<h1 class="technos"><i class="material-icons">whatshot</i> Technos</h1>
-	{{#personal.technos}}
-		<p class="split"><span class="left">{{name}}</span><span class="right">{{#level}}<i class="material-icons">star</i>{{/level}}</span></p>
-	{{/personal.technos}}
-</section>
-<!--<section>
-	<h1 class="tags"><i class="material-icons">lightbulb_outline</i> Libs / Langs</h1>
-	{{#trim}}{{#personal.tags}}{{.}}, {{/personal.tags}}{{/trim}}
-</section>-->
-<section>
-	<h1 class="tags"><i class="material-icons">group</i> Meetups</h1>
-	<ul>
-	{{#personal.meetups}}
-		<li>{{.}}</li>
-	{{/personal.meetups}}
-	</ul>
-</section>
-<section>
-	<h1 class="loisirs"><i class="material-icons">local_movies</i> Loisirs</h1>
-	{{#trim}}{{#personal.activities}}{{.}}, {{/personal.activities}}{{/trim}}
-</section>
-<section>
-	<h1 class="veille"><i class="material-icons">power_settings_new</i> Veille</h1>
-	{{{personal.various}}}
-</section>
-	</script>
-	<script id="footerTemplate" type="x-tmpl-mustache">
-<div>
-	<h1>Social</h1>
-	<span><a href="https://twitter.com/{{social.twitter}}"><i class="fa fa-twitter" aria-hidden="true"></i> https://twitter.com/{{social.twitter}}</a></span><br/><br/>
-	<span><a href="https://github.com/{{social.github}}"><i class="fa fa-github" aria-hidden="true"></i> https://github.com/{{social.github}}</a></span><br/><br/>
-	<span><a href="https://linkedin.com/in/{{social.linkedin}}"><i class="fa fa-linkedin" aria-hidden="true"></i> https://linkedin.com/in/{{social.linkedin}}</a></span><br/><br/>
-	<span><a href="https://twitch.tv/{{social.twitch}}"><i class="fa fa-twitch" aria-hidden="true"></i> https://twitch.tv/{{social.twitch}}</a></span>
-</div>
-<section>
-	<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
-	{{contact.name}}<br/>
-	{{{contact.address}}}<br/>
-	{{contact.email}}<br/>
-	{{contact.phone}}<br/>
-	<a href="{{contact.web}}">{{contact.web}}</a>
-</section>
-	</script>
+	</template>
+
+	<template id="certificationTemplate">
+		<span class="certification-item">
+			<img class="badge" src="" alt=""/><span class="name"></span><br/><br/>
+		</span>
+	</template>
+
+	<template id="technoTemplate">
+		<p class="split">
+			<span class="left"></span>
+			<span class="right"></span>
+		</p>
+	</template>
+
+	<template id="meetupTemplate">
+		<li></li>
+	</template>
+
+	<template id="socialLinkTemplate">
+		<span><a href=""><i aria-hidden="true"></i> <span class="url"></span></a></span><br/><br/>
+	</template>
+</head>
+<body>
+	<div>
+		<header>
+			<img src="" alt="Photo de profil" />
+			<div>
+				<h1 class="fullname"></h1>
+				<h2 class="title"></h2>
+				<p class="description"></p>
+			</div>
+		</header>
+		<div id="content">
+			<article id="main">
+				<section id="jobs">
+					<h1><i class="material-icons">card_travel</i> Expériences Professionnelles</h1>
+					<ul></ul>
+				</section>
+				<section id="formation">
+					<h1><i class="material-icons">school</i> Formation</h1>
+					<ul></ul>
+				</section>
+			</article>
+			<aside id="aside">
+				<section id="contact-section">
+					<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
+					<div class="contact-content"></div>
+				</section>
+				<section id="perso-section">
+					<h1 class="perso"><i class="material-icons">person</i> Infos Persos</h1>
+					<p class="split"><span class="left">Prénom</span><span class="right firstname"></span></p>
+					<p class="split"><span class="left">Nom</span><span class="right lastname"></span></p>
+					<p class="split"><span class="left">Anniversaire</span><span class="right birthday"></span></p>
+					<p class="split"><span class="left">Nationalité</span><span class="right nationality"></span></p>
+					<p class="split"><span class="left">Langues</span><span class="right languages"></span></p>
+				</section>
+				<section id="certifications-section">
+					<h1 class="certifications"><i class="material-icons">workspace_premium</i> Certifications</h1>
+					<div class="certifications-content"></div>
+				</section>
+				<section id="technos-section">
+					<h1 class="technos"><i class="material-icons">whatshot</i> Technos</h1>
+					<div class="technos-content"></div>
+				</section>
+				<section id="meetups-section">
+					<h1 class="tags"><i class="material-icons">group</i> Meetups</h1>
+					<ul></ul>
+				</section>
+				<section id="loisirs-section">
+					<h1 class="loisirs"><i class="material-icons">local_movies</i> Loisirs</h1>
+					<p class="activities"></p>
+				</section>
+				<section id="veille-section">
+					<h1 class="veille"><i class="material-icons">power_settings_new</i> Veille</h1>
+					<p class="various"></p>
+				</section>
+			</aside>
+		</div>
+		<footer>
+			<div>
+				<h1>Social</h1>
+				<div class="social-links"></div>
+			</div>
+			<section>
+				<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
+				<div class="footer-contact"></div>
+			</section>
+		</footer>
+	</div>
+
 	<script>
-var data = {
-	personal: {
-		firstname: "Vincent",
-		lastname: "Ferries",
-		birthday: "21/02/1984",
-		nationality: "Français",
-		languages: ["Français", "Anglais"],
-		technos: [
-			{name: "Java", level: 5},
-			{name: "Android", level: 4},
-			{name: "JS/TS", level: 5},
-			{name: "Python", level: 3},
-			{name: "Kotlin", level: 4}
-		],
-		certifications: [
-			{name: "CKA", badge: "cka.png"},
-			{name: "CKAD", badge: "ckad.png"},
-			{name: "Oracle Java SE 11", badge: "javase11.png"},
-		],
-		tags: ["Kotlin", "Android", "Spring 5", "Angular", "VueJS", "Java", "Java EE", "TypeScript", "Dart", "Python", "Ruby", "Haskell", "bash", "..."],
-		meetups: ["DevFest Toulouse", "Toulouse JUG", "GDG Toulouse", "Software Crafters Toulouse"],
-		activities: ["Cirque (équilibre, mât chinois, jonglage)", "Plongée (N2)", "Escalade", "Randonnées", "Ski", "Slackline", "Jeux de société", "Lecture", "Moto"],
-		various: "Nombreux MOOCS tels que Crytographie, Data Science, Big Data, NoSQL, la programmation fonctionnelle...<br/><br/>Katas réguliers  sous CodeWars, exercism, CheckIO.<br/><br/>Deux applications personnelles sur le store : Maze Maker Duel (Android) et Fleurs du Sud (Ionic/AngularJS)",
-		title: "Développeur logiciel indépendant",
-		description: "Passionné de technique, je cherche à m'orienter vers un profil d'expert technique et de formateur (Java, Android, méthodologies agiles et software craftsmanship).<br/><br/>Spécialités : Conception et développement Kotlin, Java, Android et JavaScript.<br/>Veille technologique personnelle constante (projets personnels sur des technologies récentes, engagement dans le milieu associatif au Toulouse JUG et Software Craftmanship Toulouse entre autres)",
-		imgUrl: "images/profil_square.png"
-	},
-	experiences: [
-		{
-			dateStart: "2016",
-			dateEnd: "aujourd'hui",
-			title: "Indépendant En Veille",
-			description: "Désormais freelance, je recherche des missions techniques, ou dans des équipes stimulantes.<br/><br/>" +
+	const data = {
+		personal: {
+			firstname: "Vincent",
+			lastname: "Ferries",
+			birthday: "21/02/1984",
+			nationality: "Français",
+			languages: ["Français", "Anglais"],
+			technos: [
+				{ name: "Java", level: 5 },
+				{ name: "Android", level: 4 },
+				{ name: "JS/TS", level: 5 },
+				{ name: "Python", level: 3 },
+				{ name: "Kotlin", level: 4 }
+			],
+			certifications: [
+				{ name: "CKA", badge: "cka.png" },
+				{ name: "CKAD", badge: "ckad.png" },
+				{ name: "Oracle Java SE 11", badge: "javase11.png" }
+			],
+			tags: ["Kotlin", "Android", "Spring 5", "Angular", "VueJS", "Java", "Java EE", "TypeScript", "Dart", "Python", "Ruby", "Haskell", "bash", "..."],
+			meetups: ["DevFest Toulouse", "Toulouse JUG", "GDG Toulouse", "Software Crafters Toulouse"],
+			activities: ["Cirque (équilibre, mât chinois, jonglage)", "Plongée (N2)", "Escalade", "Randonnées", "Ski", "Slackline", "Jeux de société", "Lecture", "Moto"],
+			various: "Nombreux MOOCS tels que Crytographie, Data Science, Big Data, NoSQL, la programmation fonctionnelle...<br/><br/>Katas réguliers  sous CodeWars, exercism, CheckIO.<br/><br/>Deux applications personnelles sur le store : Maze Maker Duel (Android) et Fleurs du Sud (Ionic/AngularJS)",
+			title: "Développeur logiciel indépendant",
+			description: "Passionné de technique, je cherche à m'orienter vers un profil d'expert technique et de formateur (Java, Android, méthodologies agiles et software craftsmanship).<br/><br/>Spécialités : Conception et développement Kotlin, Java, Android et JavaScript.<br/>Veille technologique personnelle constante (projets personnels sur des technologies récentes, engagement dans le milieu associatif au Toulouse JUG et Software Craftmanship Toulouse entre autres)",
+			imgUrl: "images/profil_square.png"
+		},
+		experiences: [
+			{
+				dateStart: "2016",
+				dateEnd: "aujourd'hui",
+				title: "Indépendant En Veille",
+				description: "Désormais freelance, je recherche des missions techniques, ou dans des équipes stimulantes.<br/><br/>" +
 					"Chez Pros :<br/>Développement <strong>Java EE</strong>, micro services, <strong>Kubernetes</strong> (K8S), helm, kafka et zookeeper.<br/>Architecture CQRS et event sourcing. Observabilité dans le cloud Azure, AppInsight, Prometheus, Grafana.<br/><br/>" +
 					"Chez Renault :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. eXtreme Programming, <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
-					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l’espace client). Membre d’une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
-					"Développement en <strong>Angular</strong> et <strong>Spring</strong> d’une application de gestion de leads, back-office agence d’une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
+					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l'espace client). Membre d'une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
+					"Développement en <strong>Angular</strong> et <strong>Spring</strong> d'une application de gestion de leads, back-office agence d'une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
 					"Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS."
+			},
+			{
+				dateStart: "2016",
+				dateEnd: "2019",
+				title: "DevFest Toulouse",
+				description: "Membre fondateur du DevFest Toulouse. Une conférence d'une journée avec 1000 participants."
+			},
+			{
+				dateStart: "2014",
+				dateEnd: "2015",
+				title: "Conférences",
+				description: "Speaker <strong>Devoxx France 2014</strong> et <strong>Eclipse Con France</strong> 2014 et 2015 :<br/>- Atelier Code Retreat à Devoxx<br/>- Atelier sur Dart et les WebComponents à l'Eclipse Con 2014<br/>- Présentation sur le refactoring de code Java 8 à l'Eclipse Con 2015"
+			},
+			{
+				dateStart: "2011",
+				dateEnd: "2015",
+				title: "Génigraph puis Softeam (rachat)",
+				description: "Développement d'une application de géolocalisation sous <strong>Android</strong> pour le compte d'ERDF. Représentation de l'intégralité de leur réseau électrique. Cartographie offline basée sur Open Street Map, overlays, gros volumes de données, cryptographie et traitements lourds sur appareil mobile. Création d'un fichier binaire avec table d'index des blocs fonction de leur position géographique.<br/><br/>Airbus et Eurocopter :<br/>Développement d'une application d'édition de graphes en mode collaboratif pour modéliser les intéractions pilote/cockpit. Technologies <strong>Java EE 7</strong> (SSE et websockets) et <strong>ExtJS</strong>. Application des principes CQRS, représentation cockpit en 3D avec BabylonJS, graphiques réalisés avec D3.<br/><br/>Formations données pour le compte de <strong>JBoss</strong> sur <strong>Java EE 6</strong>."
+			},
+			{
+				dateStart: "2007",
+				dateEnd: "2011",
+				title: "CELAD",
+				description: "De janvier 2009 à juin 2011 :<br/>Développement de sites web à destination du grand public pour la gestion des tickets restaurant en Java EE avec le framework <strong>Seam</strong> (JSF, RichFaces, EJB3, JPA, Hibernate, Ajax...). Rédaction des spécifications détaillées et développement de la solution en équipe de 7 personnes.<br/><br/>D'avril à décembre 2008 : Réalisation d'une interface <strong>WxPython</strong> pour une librairie en C++. Traitements massifs de résultats de simulations aérospatiales pour la société Latécoère.<br/><br/>De juin 2007 à février 2008 : Conception et développement d'applications <strong>J2EE</strong> basées sur Struts, Spring, Swing, Eclipse RCP pour le compte du MIPIH (Midi Pyrénées Informatique Hospitalière). Modélisation UML et génération du squelette du code d'une application SOA. Réalisation d'un prototype de référentiel pour le moteur de règles Drools."
+			},
+			{
+				dateStart: "2006",
+				dateEnd: "2007",
+				title: "Eurecia alternance",
+				description: "Développement d'une plateforme multiservices en Java EE pour une gestion simplifiée des activités de Ressources Humaines. Génération automatique de rapports avec JfreeChart. Développement de la solution et paramétrage d'un cluster de serveurs Jboss avec réplication de sessions."
+			}
+		],
+		formations: [
+			{
+				date: "2007",
+				title: "Master 2 Génie Logiciel et Répartition",
+				description: "à l'Université Paul Sabatier de Toulouse"
+			},
+			{
+				date: "2005",
+				title: "Licence d'Informatique",
+				description: "à l'Université Paul Sabatier de Toulouse"
+			},
+			{
+				date: "2002",
+				title: "Baccalauréat Scientifique",
+				description: "Lycée Pierre Paul Riquet"
+			}
+		],
+		social: {
+			twitter: "VincentFERRIES",
+			github: "vferries",
+			linkedin: "vferries",
+			twitch: "EnVeilleCode"
 		},
-		{
-			dateStart: "2016",
-			dateEnd: "2019",
-			title: "DevFest Toulouse",
-			description: "Membre fondateur du DevFest Toulouse. Une conférence d'une journée avec 1000 participants."
-		},
-		{
-			dateStart: "2014",
-			dateEnd: "2015",
-			title: "Conférences",
-			description: "Speaker <strong>Devoxx France 2014</strong> et <strong>Eclipse Con France</strong> 2014 et 2015 :<br/>- Atelier Code Retreat à Devoxx<br/>- Atelier sur Dart et les WebComponents à l'Eclipse Con 2014<br/>- Présentation sur le refactoring de code Java 8 à l'Eclipse Con 2015"
-		},
-		{
-			dateStart: "2011",
-			dateEnd: "2015",
-			title: "Génigraph puis Softeam (rachat)",
-			description: "Développement d'une application de géolocalisation sous <strong>Android</strong> pour le compte d'ERDF. Représentation de l'intégralité de leur réseau électrique. Cartographie offline basée sur Open Street Map, overlays, gros volumes de données, cryptographie et traitements lourds sur appareil mobile. Création d'un fichier binaire avec table d'index des blocs fonction de leur position géographique.<br/><br/>Airbus et Eurocopter :<br/>Développement d'une application d'édition de graphes en mode collaboratif pour modéliser les intéractions pilote/cockpit. Technologies <strong>Java EE 7</strong> (SSE et websockets) et <strong>ExtJS</strong>. Application des principes CQRS, représentation cockpit en 3D avec BabylonJS, graphiques réalisés avec D3.<br/><br/>Formations données pour le compte de <strong>JBoss</strong> sur <strong>Java EE 6</strong>."
-		},
-		{
-			dateStart: "2007",
-			dateEnd: "2011",
-			title: "CELAD",
-			description: "De janvier 2009 à juin 2011 :<br/>Développement de sites web à destination du grand public pour la gestion des tickets restaurant en Java EE avec le framework <strong>Seam</strong> (JSF, RichFaces, EJB3, JPA, Hibernate, Ajax...). Rédaction des spécifications détaillées et développement de la solution en équipe de 7 personnes.<br/><br/>D'avril à décembre 2008 : Réalisation d'une interface <strong>WxPython</strong> pour une librairie en C++. Traitements massifs de résultats de simulations aérospatiales pour la société Latécoère.<br/><br/>De juin 2007 à février 2008 : Conception et développement d'applications <strong>J2EE</strong> basées sur Struts, Spring, Swing, Eclipse RCP pour le compte du MIPIH (Midi Pyrénées Informatique Hospitalière). Modélisation UML et génération du squelette du code d'une application SOA. Réalisation d'un prototype de référentiel pour le moteur de règles Drools."
-		},
-		{
-			dateStart: "2006",
-			dateEnd: "2007",
-			title: "Eurecia alternance",
-			description: "Développement d'une plateforme multiservices en Java EE pour une gestion simplifiée des activités de Ressources Humaines.Génération automatique de rapports avec JfreeChart. Développement de la solution et paramétrage d'un cluster de serveurs Jboss avec réplication de sessions."
+		contact: {
+			name: "EURL En Veille",
+			address: "29 chemin de Nicol<br/>Bât C, Appt 4, 31200 TOULOUSE",
+			email: "vincent.ferries@gmail.com",
+			phone: "06 62 11 74 84",
+			web: "https://enveille.info"
 		}
-	],
-	formations: [
-/*		{
-			date: "2022",
-			title: "CKA et CKAD",
-			description: "Certified Kubernetes Administrator et Application Developer"
-		},
-		{
-			date: "2021",
-			title: "OCP Java SE 11 Developer",
-			description: "Certification Oracle"
-		},*/
-		{
-			date: "2007",
-			title: "Master 2 Génie Logiciel et Répartition",
-			description: "à l'Université Paul Sabatier de Toulouse"
-		},
-		{
-			date: "2005",
-			title: "Licence d'Informatique",
-			description: "à l'Université Paul Sabatier de Toulouse"
-		},
-		{
-			date: "2002",
-			title: "Baccalauréat Scientifique",
-			description: "Lycée Pierre Paul Riquet"
-		}
-	],
-	social: {
-		twitter: "VincentFERRIES",
-		github: "vferries",
-		linkedin: "vferries",
-		twitch: "EnVeilleCode"
-	},
-	contact: {
-		name: "EURL En Veille",
-		address: "29 chemin de Nicol<br/>Bât C, Appt 4, 31200 TOULOUSE",
-		email: "vincent.ferries@gmail.com",
-		phone: "06 62 11 74 84",
-		web: "https://enveille.info"
-	},
-}
+	};
 
-function fillDocument() {
-	data.personal.technos = data.personal.technos.map(function(t) { return {name: t.name, level: [...Array(t.level).keys()]} })
-	data.trim = function () {
-    	return function (text, render) {
-      		return render(text).replace(/(,\s*$)/g, ''); // trim trailing comma and whitespace
-    	}
+	// Social network configuration
+	const socialNetworks = [
+		{ key: 'twitter', icon: 'fa-twitter', urlBase: 'https://twitter.com/' },
+		{ key: 'github', icon: 'fa-github', urlBase: 'https://github.com/' },
+		{ key: 'linkedin', icon: 'fa-linkedin', urlBase: 'https://linkedin.com/in/' },
+		{ key: 'twitch', icon: 'fa-twitch', urlBase: 'https://twitch.tv/' }
+	];
+
+	function renderHeader() {
+		const header = document.querySelector('header');
+		header.querySelector('img').src = data.personal.imgUrl;
+		header.querySelector('.fullname').textContent = `${data.personal.firstname} ${data.personal.lastname}`;
+		header.querySelector('.title').textContent = data.personal.title;
+		header.querySelector('.description').innerHTML = data.personal.description;
 	}
-	var template = document.getElementById('headerTemplate').innerHTML
-	document.querySelector('header').innerHTML = Mustache.render(template, data.personal)
 
-	var templateContent = document.getElementById('contentTemplate').innerHTML
-	document.querySelector('#main').innerHTML = Mustache.render(templateContent, data)
+	function renderExperiences() {
+		const template = document.getElementById('experienceTemplate');
+		const container = document.querySelector('#jobs ul');
 
-	var asideContent = document.getElementById('asideTemplate').innerHTML
-	document.querySelector('#aside').innerHTML = Mustache.render(asideContent, data)
+		data.experiences.forEach(exp => {
+			const clone = template.content.cloneNode(true);
+			clone.querySelector('.title').textContent = exp.title;
+			clone.querySelector('.dates').textContent = `${exp.dateStart}-${exp.dateEnd}`;
+			clone.querySelector('.description').innerHTML = exp.description;
+			container.appendChild(clone);
+		});
+	}
 
-	var footerTemplate = document.getElementById('footerTemplate').innerHTML
-	document.querySelector('footer').innerHTML = Mustache.render(footerTemplate, data)
-}
+	function renderFormations() {
+		const template = document.getElementById('formationTemplate');
+		const container = document.querySelector('#formation ul');
+
+		data.formations.forEach(formation => {
+			const clone = template.content.cloneNode(true);
+			clone.querySelector('.date').textContent = formation.date;
+			clone.querySelector('.title').textContent = formation.title;
+			clone.querySelector('.details').innerHTML = formation.description;
+			container.appendChild(clone);
+		});
+	}
+
+	function renderContact(containerSelector) {
+		const container = document.querySelector(containerSelector);
+		container.innerHTML = `
+			${data.contact.name}<br/>
+			${data.contact.address}<br/>
+			${data.contact.email}<br/>
+			${data.contact.phone}<br/>
+			<a href="${data.contact.web}">${data.contact.web}</a>
+		`;
+	}
+
+	function renderPersonalInfo() {
+		const section = document.getElementById('perso-section');
+		section.querySelector('.firstname').textContent = data.personal.firstname;
+		section.querySelector('.lastname').textContent = data.personal.lastname;
+		section.querySelector('.birthday').textContent = data.personal.birthday;
+		section.querySelector('.nationality').textContent = data.personal.nationality;
+		section.querySelector('.languages').textContent = data.personal.languages.join(', ');
+	}
+
+	function renderCertifications() {
+		const template = document.getElementById('certificationTemplate');
+		const container = document.querySelector('.certifications-content');
+
+		data.personal.certifications.forEach(cert => {
+			const clone = template.content.cloneNode(true);
+			const img = clone.querySelector('img');
+			img.src = `images/${cert.badge}`;
+			img.alt = cert.name;
+			clone.querySelector('.name').textContent = cert.name;
+			container.appendChild(clone);
+		});
+	}
+
+	function renderTechnos() {
+		const template = document.getElementById('technoTemplate');
+		const container = document.querySelector('.technos-content');
+
+		data.personal.technos.forEach(techno => {
+			const clone = template.content.cloneNode(true);
+			clone.querySelector('.left').textContent = techno.name;
+			clone.querySelector('.right').innerHTML = '<i class="material-icons">star</i>'.repeat(techno.level);
+			container.appendChild(clone);
+		});
+	}
+
+	function renderMeetups() {
+		const template = document.getElementById('meetupTemplate');
+		const container = document.querySelector('#meetups-section ul');
+
+		data.personal.meetups.forEach(meetup => {
+			const clone = template.content.cloneNode(true);
+			clone.querySelector('li').textContent = meetup;
+			container.appendChild(clone);
+		});
+	}
+
+	function renderActivities() {
+		document.querySelector('.activities').textContent = data.personal.activities.join(', ');
+	}
+
+	function renderVarious() {
+		document.querySelector('.various').innerHTML = data.personal.various;
+	}
+
+	function renderSocialLinks() {
+		const template = document.getElementById('socialLinkTemplate');
+		const container = document.querySelector('.social-links');
+
+		socialNetworks.forEach(network => {
+			const username = data.social[network.key];
+			if (!username) return;
+
+			const url = `${network.urlBase}${username}`;
+			const clone = template.content.cloneNode(true);
+			const link = clone.querySelector('a');
+			link.href = url;
+			clone.querySelector('i').classList.add('fa', network.icon);
+			clone.querySelector('.url').textContent = url;
+			container.appendChild(clone);
+		});
+	}
+
+	function fillDocument() {
+		renderHeader();
+		renderExperiences();
+		renderFormations();
+		renderContact('.contact-content');
+		renderContact('.footer-contact');
+		renderPersonalInfo();
+		renderCertifications();
+		renderTechnos();
+		renderMeetups();
+		renderActivities();
+		renderVarious();
+		renderSocialLinks();
+	}
+
+	document.addEventListener('DOMContentLoaded', fillDocument);
 	</script>
-</head>
-<body onload="fillDocument()">
-	<div>
-		<header></header>
-		<div id="content">
-			<article id="main"></article>
-			<aside id="aside"></aside>
-		</div>
-		<footer></footer>
-	</div>
 </body>
 </html>
