@@ -168,22 +168,40 @@ h1 {
 }
 
 @media print {
+	/* ==========================================
+	   PRINT STYLES
+	   ========================================== */
+
+	/* Disable transitions for print */
 	* {
 		-webkit-transition: none !important;
 		transition: none !important;
 	}
 
-	@page { margin: 6mm 0; }
+	/* Page setup - A4 with margins */
+	@page {
+		size: A4;
+		margin: 10mm;
+	}
 
+	/* Base layout adjustments */
 	body > div {
 		width: auto;
-		margin: 0 6mm;
+		margin: 0;
 	}
 
 	body {
 		font-size: 0.85rem;
+		background-color: #ffffff;
 	}
 
+	/* Ensure 2-column layout prints correctly */
+	#content {
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Compact spacing for print */
 	#jobs li, #formation li {
 		padding-left: 40px;
 	}
@@ -194,5 +212,72 @@ h1 {
 
 	aside section, footer section {
 		width: 160px;
+	}
+
+	/* ==========================================
+	   FRAGMENTATION CONTROL
+	   ========================================== */
+
+	/* Prevent breaks inside key elements */
+	header,
+	footer,
+	aside section {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+
+	/* Experience and formation entries - avoid breaking */
+	#jobs li,
+	#formation li {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+
+	/* Keep headings with their content */
+	section h1 {
+		break-after: avoid;
+		page-break-after: avoid;
+	}
+
+	/* Widows and orphans - prevent lonely lines */
+	p, li {
+		orphans: 2;
+		widows: 2;
+	}
+
+	/* ==========================================
+	   BOX DECORATION BREAK
+	   Clone borders/padding when elements break
+	   ========================================== */
+
+	#main section,
+	aside section,
+	footer div,
+	footer section,
+	header div {
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+	}
+
+	/* ==========================================
+	   PRINT VISUAL CLEANUP
+	   ========================================== */
+
+	/* Remove shadows for cleaner print and less ink */
+	*,
+	*::before,
+	*::after {
+		box-shadow: none !important;
+	}
+
+	/* Ensure colors print correctly */
+	* {
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+
+	/* Links - keep readable but don't underline */
+	a {
+		text-decoration: none;
 	}
 }
