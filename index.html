@@ -318,13 +318,15 @@
 	function renderTechnos() {
 		const template = document.getElementById('technoTemplate');
 		const container = document.querySelector('.technos-content');
+		const maxLevel = 5;
 
 		data.personal.technos.forEach(techno => {
 			const clone = template.content.cloneNode(true);
 			clone.querySelector('.left').textContent = techno.name;
-			const stars = '<i class="material-icons" aria-hidden="true">star</i>'.repeat(techno.level);
-			const srLabel = `<span class="sr-only">${techno.level} sur 5</span>`;
-			clone.querySelector('.right').innerHTML = stars + srLabel;
+			const filledStars = '<i class="material-icons" aria-hidden="true">star</i>'.repeat(techno.level);
+			const emptyStars = '<i class="material-icons star-empty" aria-hidden="true">star_border</i>'.repeat(maxLevel - techno.level);
+			const srLabel = `<span class="sr-only">${techno.level} sur ${maxLevel}</span>`;
+			clone.querySelector('.right').innerHTML = filledStars + emptyStars + srLabel;
 			container.appendChild(clone);
 		});
 	}
