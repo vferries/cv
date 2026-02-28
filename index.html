@@ -48,7 +48,7 @@
 <body>
 	<div>
 		<header>
-			<img src="" alt="Photo de profil" />
+			<img src="" alt="Vincent Ferries - Photo de profil" />
 			<div>
 				<h1 class="fullname"></h1>
 				<h2 class="title"></h2>
@@ -58,21 +58,21 @@
 		<div id="content">
 			<article id="main">
 				<section id="jobs">
-					<h1><i class="material-icons">card_travel</i> Expériences Professionnelles</h1>
+					<h1><i class="material-icons" aria-hidden="true">card_travel</i> Expériences Professionnelles</h1>
 					<ul></ul>
 				</section>
 				<section id="formation">
-					<h1><i class="material-icons">school</i> Formation</h1>
+					<h1><i class="material-icons" aria-hidden="true">school</i> Formation</h1>
 					<ul></ul>
 				</section>
 			</article>
 			<aside id="aside">
 				<section id="contact-section">
-					<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
+					<h1 class="contact"><i class="material-icons" aria-hidden="true">account_box</i> Contact</h1>
 					<div class="contact-content"></div>
 				</section>
 				<section id="perso-section">
-					<h1 class="perso"><i class="material-icons">person</i> Infos Persos</h1>
+					<h1 class="perso"><i class="material-icons" aria-hidden="true">person</i> Infos Persos</h1>
 					<p class="split"><span class="left">Prénom</span><span class="right firstname"></span></p>
 					<p class="split"><span class="left">Nom</span><span class="right lastname"></span></p>
 					<p class="split"><span class="left">Anniversaire</span><span class="right birthday"></span></p>
@@ -80,23 +80,23 @@
 					<p class="split"><span class="left">Langues</span><span class="right languages"></span></p>
 				</section>
 				<section id="certifications-section">
-					<h1 class="certifications"><i class="material-icons">workspace_premium</i> Certifications</h1>
+					<h1 class="certifications"><i class="material-icons" aria-hidden="true">workspace_premium</i> Certifications</h1>
 					<div class="certifications-content"></div>
 				</section>
 				<section id="technos-section">
-					<h1 class="technos"><i class="material-icons">whatshot</i> Technos</h1>
+					<h1 class="technos"><i class="material-icons" aria-hidden="true">whatshot</i> Technos</h1>
 					<div class="technos-content"></div>
 				</section>
 				<section id="meetups-section">
-					<h1 class="tags"><i class="material-icons">group</i> Meetups</h1>
+					<h1 class="tags"><i class="material-icons" aria-hidden="true">group</i> Meetups</h1>
 					<ul></ul>
 				</section>
 				<section id="loisirs-section">
-					<h1 class="loisirs"><i class="material-icons">local_movies</i> Loisirs</h1>
+					<h1 class="loisirs"><i class="material-icons" aria-hidden="true">local_movies</i> Loisirs</h1>
 					<p class="activities"></p>
 				</section>
 				<section id="veille-section">
-					<h1 class="veille"><i class="material-icons">power_settings_new</i> Veille</h1>
+					<h1 class="veille"><i class="material-icons" aria-hidden="true">power_settings_new</i> Veille</h1>
 					<p class="various"></p>
 				</section>
 			</aside>
@@ -107,7 +107,7 @@
 				<div class="social-links"></div>
 			</div>
 			<section>
-				<h1 class="contact"><i class="material-icons">account_box</i> Contact</h1>
+				<h1 class="contact"><i class="material-icons" aria-hidden="true">account_box</i> Contact</h1>
 				<div class="footer-contact"></div>
 			</section>
 		</footer>
@@ -299,7 +299,9 @@
 		data.personal.technos.forEach(techno => {
 			const clone = template.content.cloneNode(true);
 			clone.querySelector('.left').textContent = techno.name;
-			clone.querySelector('.right').innerHTML = '<i class="material-icons">star</i>'.repeat(techno.level);
+			const stars = '<i class="material-icons" aria-hidden="true">star</i>'.repeat(techno.level);
+			const srLabel = `<span class="sr-only">${techno.level} sur 5</span>`;
+			clone.querySelector('.right').innerHTML = stars + srLabel;
 			container.appendChild(clone);
 		});
 	}
