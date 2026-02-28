@@ -207,6 +207,7 @@ h1 {
 
 	header div {
 		padding: 10px;
+		box-sizing: border-box;
 	}
 
 	/* Stack main content and sidebar vertically */
@@ -219,6 +220,10 @@ h1 {
 		width: 100%;
 	}
 
+	#main section {
+		box-sizing: border-box;
+	}
+
 	/* Sidebar takes full width and stacks below */
 	aside {
 		margin-left: 0;
@@ -227,6 +232,7 @@ h1 {
 
 	aside section {
 		width: 100%;
+		box-sizing: border-box;
 	}
 
 	/* Stack footer vertically */
@@ -236,21 +242,33 @@ h1 {
 
 	footer div {
 		margin-right: 0;
+		box-sizing: border-box;
 	}
 
 	footer section {
 		width: 100%;
+		box-sizing: border-box;
 	}
 
-	/* Adjust job/formation entries for mobile */
+	/* Adjust job/formation entries for mobile - remove background icon */
 	#jobs li, #formation li {
 		flex-direction: column;
-		padding-left: 20px;
+		padding-left: 0;
+		padding-bottom: 15px;
+		margin-bottom: 10px;
+		background: none;
+		border-bottom: 1px solid #eeeeee;
+	}
+
+	#jobs li:last-child, #formation li:last-child {
+		border-bottom: none;
+		margin-bottom: 0;
 	}
 
 	.mission {
 		width: 100%;
 		margin-bottom: 5px;
+		font-weight: bold;
 	}
 
 	.description {
@@ -269,10 +287,10 @@ h1 {
 		transition: none !important;
 	}
 
-	/* Page setup - A4 with margins */
+	/* Page setup - A4 with smaller margins */
 	@page {
 		size: A4;
-		margin: 10mm;
+		margin: 6mm;
 	}
 
 	/* Base layout adjustments */
@@ -282,7 +300,7 @@ h1 {
 	}
 
 	body {
-		font-size: 0.85rem;
+		font-size: 0.8rem;
 		background-color: #ffffff;
 	}
 
@@ -290,19 +308,98 @@ h1 {
 	#content {
 		display: flex;
 		flex-direction: row;
+		align-items: flex-start;
 	}
 
 	/* Compact spacing for print */
 	#jobs li, #formation li {
 		padding-left: 40px;
+		background: url("../images/puce.png") no-repeat;
+		flex-direction: row;
+		border-bottom: none;
+		margin-bottom: 0;
 	}
 
 	.mission {
 		width: 80px;
+		font-weight: normal;
+	}
+
+	.description {
+		margin-left: 10px;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+	}
+
+	#main section {
+		box-sizing: border-box;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
 	}
 
 	aside section, footer section {
-		width: 160px;
+		width: 180px;
+		box-sizing: border-box;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+	}
+
+	/* Restore header layout for print */
+	header {
+		flex-direction: row;
+		text-align: left;
+		align-items: stretch;
+	}
+
+	/* Profile image block - keep border, match height with header div */
+	header img {
+		margin-right: 10px;
+		margin-bottom: 0;
+		padding: 5px;
+		border: 1px solid #cccccc;
+		box-sizing: border-box;
+		width: auto;
+		max-width: 180px;
+		height: auto;
+	}
+
+	/* Header div takes remaining space, vertically centered content */
+	header div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 10px 20px;
+	}
+
+	/* Restore 2-column layout for print - align both columns */
+	#content {
+		align-items: flex-start;
+	}
+
+	#main {
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	aside {
+		margin-left: 10px;
+		margin-top: 0 !important;
+		padding-top: 0;
+	}
+
+	/* Both first sections should have identical margin */
+	#main section:first-child,
+	aside section:first-child {
+		margin-top: 10px !important;
+	}
+
+	/* Restore footer layout for print */
+	footer {
+		flex-direction: row;
+	}
+
+	footer div {
+		margin-right: 10px;
 	}
 
 	/* ==========================================
