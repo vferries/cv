@@ -139,18 +139,45 @@ footer section {
 }
 
 #jobs li, #formation li {
-	background: url("../images/puce.png") no-repeat;
-	padding-left: 60px;
+	padding-left: 30px;
 	padding-bottom: 15px;
 	margin-bottom: 15px;
 	display: flex;
-	border-bottom: 1px solid #007DA5;
+	position: relative;
+}
+
+/* Cercle timeline avec ombre */
+#jobs li::before, #formation li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 5px;
+	width: 12px;
+	height: 12px;
+	background-color: #007DA5;
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ligne verticale timeline */
+#jobs li::after, #formation li::after {
+	content: "";
+	position: absolute;
+	left: 5px;
+	top: 20px;
+	bottom: -15px;
+	width: 2px;
+	background-color: #007DA5;
 }
 
 #jobs li:last-child, #formation li:last-child {
-	border-bottom: none;
 	margin-bottom: 0;
 	padding-bottom: 0;
+}
+
+/* Pas de ligne après le dernier élément */
+#jobs li:last-child::after, #formation li:last-child::after {
+	display: none;
 }
 
 .mission {
@@ -298,18 +325,28 @@ h1 {
 		box-sizing: border-box;
 	}
 
-	/* Adjust job/formation entries for mobile - remove background icon */
+	/* Adjust job/formation entries for mobile */
 	#jobs li, #formation li {
 		flex-direction: column;
-		padding-left: 0;
+		padding-left: 25px;
 		padding-bottom: 15px;
 		margin-bottom: 10px;
-		background: none;
-		border-bottom: 1px solid #007DA5;
+	}
+
+	/* Smaller timeline circle on mobile */
+	#jobs li::before, #formation li::before {
+		width: 10px;
+		height: 10px;
+		top: 3px;
+	}
+
+	/* Adjust timeline line for mobile */
+	#jobs li::after, #formation li::after {
+		left: 4px;
+		top: 16px;
 	}
 
 	#jobs li:last-child, #formation li:last-child {
-		border-bottom: none;
 		margin-bottom: 0;
 	}
 
@@ -361,11 +398,27 @@ h1 {
 
 	/* Compact spacing for print */
 	#jobs li, #formation li {
-		padding-left: 40px;
-		background: url("../images/puce.png") no-repeat;
+		padding-left: 25px;
 		flex-direction: row;
 		border-bottom: none;
-		margin-bottom: 0;
+		margin-bottom: 5px;
+		padding-bottom: 5px;
+	}
+
+	/* Timeline circle for print - smaller */
+	#jobs li::before, #formation li::before {
+		width: 8px;
+		height: 8px;
+		top: 4px;
+		box-shadow: none;
+	}
+
+	/* Timeline line for print */
+	#jobs li::after, #formation li::after {
+		left: 3px;
+		top: 14px;
+		bottom: -5px;
+		width: 1px;
 	}
 
 	.mission {
