@@ -12,9 +12,10 @@ A single-page personal CV website for Vincent Ferries, a French freelance softwa
 
 ```
 /home/vincent/cv/
-├── index.html              # Main file - templates, data, and logic
+├── index.html              # Main file - templates and rendering logic
+├── data.js                 # CV content data (experiences, formations, etc.)
 ├── css/
-│   ├── style.css           # Custom styles
+│   ├── style.css           # Custom styles with CSS design system
 │   └── font-awesome.min.css # Font Awesome (do not edit)
 ├── fonts/                  # Font files (do not edit)
 └── images/                 # Profile photo and certification badges
