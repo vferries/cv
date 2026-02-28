@@ -174,6 +174,16 @@ p.split {
 }
 
 .left {
+	flex-shrink: 0;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.left::after {
+	content: ":";
+}
+
+.right {
 	flex: 1;
 }
 

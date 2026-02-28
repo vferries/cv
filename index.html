@@ -145,11 +145,11 @@
 			nationality: "Français",
 			languages: ["Français", "Anglais"],
 			technos: [
-				{ name: "Java", level: 5 },
-				{ name: "Android", level: 4 },
-				{ name: "JS/TS", level: 5 },
-				{ name: "Python", level: 3 },
-				{ name: "Kotlin", level: 4 }
+				{ category: "Langages", items: "Kotlin, Java, TypeScript, Python" },
+				{ category: "Mobile", items: "Android, AOSP, Jetpack Compose" },
+				{ category: "Backend", items: "Spring, Java EE, Microservices" },
+				{ category: "Cloud/DevOps", items: "Kubernetes, Docker, Azure, CI/CD" },
+				{ category: "Frontend", items: "Angular, VueJS, React" }
 			],
 			certifications: [
 				{ name: "CKA", badge: "cka.png" },
@@ -160,22 +160,51 @@
 			meetups: ["DevFest Toulouse", "Toulouse JUG", "GDG Toulouse", "Software Crafters Toulouse"],
 			activities: ["Cirque (équilibre, mât chinois, jonglage)", "Plongée (N2)", "Escalade", "Randonnées", "Ski", "Slackline", "Jeux de société", "Lecture", "Moto"],
 			various: "Nombreux MOOCS tels que Crytographie, Data Science, Big Data, NoSQL, la programmation fonctionnelle...<br/><br/>Katas réguliers  sous CodeWars, exercism, CheckIO.<br/><br/>Deux applications personnelles sur le store : Maze Maker Duel (Android) et Fleurs du Sud (Ionic/AngularJS)",
-			title: "Développeur logiciel indépendant",
-			description: "Passionné de technique, je cherche à m'orienter vers un profil d'expert technique et de formateur (Java, Android, méthodologies agiles et software craftsmanship).<br/><br/>Spécialités : Conception et développement Kotlin, Java, Android et JavaScript.<br/>Veille technologique personnelle constante (projets personnels sur des technologies récentes, engagement dans le milieu associatif au Toulouse JUG et Software Craftmanship Toulouse entre autres)",
+			title: "Consultant Expert - Architecture & Développement",
+			description: "20 ans d'expérience en développement logiciel. Architecte certifié Kubernetes (CKA/CKAD), spécialiste Android Automotive et Kotlin.<br/><br/>J'accompagne les équipes vers l'excellence technique via le Software Craftsmanship, TDD et les méthodologies agiles.<br/><br/>Actif dans la communauté tech : co-fondateur DevFest Toulouse, speaker Devoxx France, membre Toulouse JUG.",
 			imgUrl: "images/profil_square.png"
 		},
 		experiences: [
 			{
-				dateStart: "2016",
+				dateStart: "2023",
 				dateEnd: "aujourd'hui",
-				title: "Indépendant En Veille",
-				description: "Freelance via ma société de conseil En Veille, sur des missions techniques variées.<br/><br/>" +
-					"Chez Renault (2023-aujourd'hui) :<br/>Architecte pour l'équipe HMI, puis Tech Lead sur des projets futuristes <strong>Android Automotive</strong>. Développement plateforme et système sur <strong>AOSP</strong>. Applications en <strong>Kotlin</strong> avec <strong>Jetpack Compose</strong>. Méthodologies <strong>Scrum</strong>, <strong>TDD</strong>, <strong>eXtreme Programming</strong>, CI/CD.<br/><br/>" +
-					"Chez Pros :<br/>Développement <strong>Java EE</strong>, micro services, <strong>Kubernetes</strong> (K8S), helm, kafka et zookeeper.<br/>Architecture CQRS et event sourcing. Observabilité dans le cloud Azure, AppInsight, Prometheus, Grafana.<br/><br/>" +
-					"Chez Renault (2018-2022) :<br/>Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>. eXtreme Programming, <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript.<br/><br/>" +
-					"Chez iBP :<br/>Support technique et coordination pour les nouveaux projets lancés dans le groupe (refonte de l'espace client). Membre d'une équipe transverse (iBP et ITCE) produisant des librairies de composants réutilisables pour les différents projets du groupe.<br/>Mono repo <strong>NX</strong>, puis <strong>Angular</strong>, utilisation de <strong>@ngrx</strong>, scripts de génération divers, le tout dans une équipe SCRUM, avec un fonctionnement git par PR, intégration continue, et hooks git.<br/><br/>" +
-					"Développement en <strong>Angular</strong> et <strong>Spring</strong> d'une application de gestion de leads, back-office agence d'une application de prêts immobiliers en ligne. Application communautaire interne complètement réactive en Spring, <strong>Kotlin</strong>, websockets, <strong>RethinkDB</strong> avec notamment gestion de trombinoscope et de calendrier dynamiques.<br/><br/>" +
-					"Chez Intel :<br/>Développement en <strong>Kotlin</strong> d'une application pour Android Wear, avec stockage des données des différents capteurs et upload des résultats sur le cloud.<br/>Développement <strong>Android</strong> d'une librairie de dialogue via Bluetooth Low Energy avec des circuits imprimés bardés de capteurs. Développement d'une librairie et application Android Wear pour dialoguer via Bluetooth Low Energy avec un téléphone sous iOS."
+				title: "Renault - Architecte & Tech Lead",
+				description: "Mission via <strong>En Veille</strong>.<br/><br/>" +
+					"Architecte pour l'équipe HMI (~200 développeurs), puis Tech Lead sur des projets futuristes <strong>Android Automotive</strong> en mode task force.<br/>" +
+					"Développement plateforme et système sur <strong>AOSP</strong>. Applications en <strong>Kotlin</strong> avec <strong>Jetpack Compose</strong>.<br/>" +
+					"Méthodologies <strong>Scrum</strong>, <strong>TDD</strong>, <strong>eXtreme Programming</strong>, CI/CD."
+			},
+			{
+				dateStart: "2022",
+				dateEnd: "2023",
+				title: "Pros - Développeur Backend",
+				description: "Mission via <strong>En Veille</strong>.<br/><br/>" +
+					"Développement <strong>Java EE</strong>, micro services, <strong>Kubernetes</strong> (K8S), Helm, Kafka et Zookeeper.<br/>" +
+					"Architecture CQRS et event sourcing. Observabilité cloud Azure, AppInsight, Prometheus, Grafana."
+			},
+			{
+				dateStart: "2018",
+				dateEnd: "2022",
+				title: "Renault - Développeur Android",
+				description: "Mission via <strong>En Veille</strong>.<br/><br/>" +
+					"Développement d'applications en <strong>Kotlin</strong> pour les futurs véhicules sous <strong>Android Automotive</strong>.<br/>" +
+					"eXtreme Programming, <strong>TDD</strong>, Espresso, MVVM. Front-ends <strong>VueJS</strong> et scripting TypeScript."
+			},
+			{
+				dateStart: "2017",
+				dateEnd: "2018",
+				title: "iBP - Tech Lead Frontend",
+				description: "Mission via <strong>En Veille</strong>.<br/><br/>" +
+					"Support technique et coordination pour la refonte de l'espace client. Équipe transverse produisant des librairies de composants réutilisables.<br/>" +
+					"Mono repo <strong>NX</strong>, <strong>Angular</strong>, <strong>@ngrx</strong>. Équipe SCRUM, PR, CI/CD."
+			},
+			{
+				dateStart: "2016",
+				dateEnd: "2017",
+				title: "Intel - Développeur Android/IoT",
+				description: "Mission via <strong>En Veille</strong>.<br/><br/>" +
+					"Développement en <strong>Kotlin</strong> d'une application Android Wear avec capteurs et upload cloud.<br/>" +
+					"Librairie <strong>Bluetooth Low Energy</strong> pour circuits imprimés et communication iOS."
 			},
 			{
 				dateStart: "2016",
@@ -319,15 +348,11 @@
 	function renderTechnos() {
 		const template = document.getElementById('technoTemplate');
 		const container = document.querySelector('.technos-content');
-		const maxLevel = 5;
 
 		data.personal.technos.forEach(techno => {
 			const clone = template.content.cloneNode(true);
-			clone.querySelector('.left').textContent = techno.name;
-			const filledStars = '<i class="material-icons" aria-hidden="true">star</i>'.repeat(techno.level);
-			const emptyStars = '<i class="material-icons star-empty" aria-hidden="true">star_border</i>'.repeat(maxLevel - techno.level);
-			const srLabel = `<span class="sr-only">${techno.level} sur ${maxLevel}</span>`;
-			clone.querySelector('.right').innerHTML = filledStars + emptyStars + srLabel;
+			clone.querySelector('.left').textContent = techno.category;
+			clone.querySelector('.right').textContent = techno.items;
 			container.appendChild(clone);
 		});
 	}
