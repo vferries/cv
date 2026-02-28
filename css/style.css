@@ -1,12 +1,69 @@
+/* ==========================================
+   DESIGN SYSTEM - CSS Variables
+   ========================================== */
+
+:root {
+	/* Colors - Brand */
+	--color-primary: #001B3D;        /* Bleu Nuit - fond/contours */
+	--color-accent: #00F2FF;         /* Bleu Électrique - détails/veille */
+	--color-secondary: #007DA5;      /* Bleu Médium - cercles/profondeur */
+	--color-white: #ffffff;
+	--color-background: #eeeeee;
+
+	/* Colors - Semantic */
+	--color-text-light: var(--color-white);
+	--color-text-dark: #333333;
+	--color-border: var(--color-secondary);
+	--color-link: var(--color-white);
+	--color-link-hover: var(--color-accent);
+	--color-print-background: var(--color-secondary);  /* Lighter ink for print */
+
+	/* Spacing */
+	--spacing-xs: 5px;
+	--spacing-sm: 10px;
+	--spacing-md: 15px;
+	--spacing-lg: 20px;
+	--spacing-xl: 30px;
+
+	/* Typography */
+	--font-family: 'Roboto', sans-serif;
+	--font-size-base: 1rem;
+	--font-size-sm: 0.85rem;
+	--font-size-lg: 1.17em;
+
+	/* Layout */
+	--container-width: 1000px;
+	--sidebar-width: 200px;
+	--profile-size: 200px;
+	--badge-size: 30px;
+
+	/* Shadows */
+	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+	--shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+	--shadow-lg: 0 6px 12px 0 rgba(0, 0, 0, 0.25), 0 8px 14px 0 rgba(0, 0, 0, 0.22);
+
+	/* Borders */
+	--border-radius: 0;
+	--border-width: 1px;
+
+	/* Timeline */
+	--timeline-dot-size: 12px;
+	--timeline-line-width: 2px;
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+
 body > div {
-	width: 1000px;
+	width: var(--container-width);
 	margin: auto;
 }
 
 body {
 	-webkit-print-color-adjust: exact;
-	font-family: 'Roboto', sans-serif;
-	background-color: #eeeeee;
+	font-family: var(--font-family);
+	background-color: var(--color-background);
 }
 
 /* Screen reader only - visually hidden but accessible */
@@ -23,23 +80,23 @@ body {
 }
 
 img {
-	background-color: #ffffff;
-	border: 1px solid #007DA5;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	padding: 10px;
-	margin-right: 10px;
-	height: 200px;
-	width: 200px;
+	background-color: var(--color-white);
+	border: var(--border-width) solid var(--color-border);
+	box-shadow: var(--shadow-md);
+	padding: var(--spacing-sm);
+	margin-right: var(--spacing-sm);
+	height: var(--profile-size);
+	width: var(--profile-size);
 }
 
 img.badge {
-	height: 30px;
-	width: 30px;
+	height: var(--badge-size);
+	width: var(--badge-size);
 	background: none;
 	border: 0;
 	box-shadow: none;
 	padding: 0;
-	margin: 0 5px 0 0;
+	margin: 0 var(--spacing-xs) 0 0;
 	vertical-align: middle;
 }
 
@@ -50,10 +107,10 @@ header {
 
 header div {
 	flex: 1;
-	background-color: #001B3D;
-	color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	padding: 0px 20px;
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+	box-shadow: var(--shadow-md);
+	padding: 0 var(--spacing-lg);
 }
 
 #content {
@@ -67,8 +124,8 @@ header h1 {
 
 header h2 {
 	margin: 0;
-	margin-bottom: 15px;
-	color: #00F2FF;
+	margin-bottom: var(--spacing-md);
+	color: var(--color-accent);
 }
 
 header p {
@@ -80,28 +137,28 @@ header p {
 }
 
 #main section {
-	margin-top: 10px;
-	background-color: #ffffff;
-	border: 1px solid #007DA5;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	padding: 10px;
+	margin-top: var(--spacing-sm);
+	background-color: var(--color-white);
+	border: var(--border-width) solid var(--color-border);
+	box-shadow: var(--shadow-md);
+	padding: var(--spacing-sm);
 }
 
 section h1 {
-	color: #00F2FF;
+	color: var(--color-accent);
 }
 
 aside {
-	margin-left: 10px;
+	margin-left: var(--spacing-sm);
 }
 
 aside section {
-	margin-top: 10px;
-	background-color: #001B3D;
-	color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	padding: 10px;
-	width: 200px;
+	margin-top: var(--spacing-sm);
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+	box-shadow: var(--shadow-md);
+	padding: var(--spacing-sm);
+	width: var(--sidebar-width);
 }
 
 footer {
@@ -110,26 +167,26 @@ footer {
 }
 
 footer h1 {
-	color: #00F2FF;
+	color: var(--color-accent);
 }
 
 footer > div {
-	margin-right: 10px;
+	margin-right: var(--spacing-sm);
 	flex: 1;
-	margin-top: 10px;
-	background-color: #001B3D;
-	color: #ffffff;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	padding: 10px;
+	margin-top: var(--spacing-sm);
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+	box-shadow: var(--shadow-md);
+	padding: var(--spacing-sm);
 }
 
 footer section {
-	margin-top: 10px;
-	background-color: #001B3D;
-	color: #ffffff;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-	padding: 10px;
-	width: 200px;
+	margin-top: var(--spacing-sm);
+	background-color: var(--color-primary);
+	color: var(--color-text-light);
+	box-shadow: var(--shadow-md);
+	padding: var(--spacing-sm);
+	width: var(--sidebar-width);
 }
 
 #jobs ul, #formation ul {
@@ -139,9 +196,9 @@ footer section {
 }
 
 #jobs li, #formation li {
-	padding-left: 30px;
-	padding-bottom: 15px;
-	margin-bottom: 15px;
+	padding-left: var(--spacing-xl);
+	padding-bottom: var(--spacing-md);
+	margin-bottom: var(--spacing-md);
 	display: flex;
 	position: relative;
 }
@@ -151,23 +208,23 @@ footer section {
 	content: "";
 	position: absolute;
 	left: 0;
-	top: 5px;
-	width: 12px;
-	height: 12px;
-	background-color: #007DA5;
+	top: var(--spacing-xs);
+	width: var(--timeline-dot-size);
+	height: var(--timeline-dot-size);
+	background-color: var(--color-secondary);
 	border-radius: 50%;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	box-shadow: var(--shadow-sm);
 }
 
 /* Ligne verticale timeline */
 #jobs li::after, #formation li::after {
 	content: "";
 	position: absolute;
-	left: 5px;
-	top: 20px;
-	bottom: -15px;
-	width: 2px;
-	background-color: #007DA5;
+	left: var(--spacing-xs);
+	top: var(--spacing-lg);
+	bottom: calc(-1 * var(--spacing-md));
+	width: var(--timeline-line-width);
+	background-color: var(--color-secondary);
 }
 
 #jobs li:last-child, #formation li:last-child {
@@ -186,7 +243,7 @@ footer section {
 
 .description {
 	flex: 1;
-	margin-left: 10px;
+	margin-left: var(--spacing-sm);
 }
 
 h1, h2 {
@@ -203,7 +260,7 @@ p.split {
 .left {
 	flex-shrink: 0;
 	font-weight: bold;
-	margin-right: 5px;
+	margin-right: var(--spacing-xs);
 }
 
 .left::after {
@@ -215,15 +272,15 @@ p.split {
 }
 
 a {
-	color: #ffffff;
+	color: var(--color-link);
 	text-decoration: none;
 	transition: color 0.2s ease;
 }
 
 h1 {
-	margin-top: 5px;
-	margin-bottom: 10px;
-	font-size: 1.17em;
+	margin-top: var(--spacing-xs);
+	margin-bottom: var(--spacing-sm);
+	font-size: var(--font-size-lg);
 }
 
 /* Empty stars styling */
@@ -238,20 +295,20 @@ h1 {
 @media (hover: hover) {
 	/* Links hover effect */
 	a:hover {
-		color: #00F2FF;
+		color: var(--color-link-hover);
 	}
 
 	/* Card hover effects */
 	#main section:hover {
-		box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.25), 0 8px 14px 0 rgba(0, 0, 0, 0.22);
+		box-shadow: var(--shadow-lg);
 	}
 
 	aside section:hover {
-		box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.25), 0 8px 14px 0 rgba(0, 0, 0, 0.22);
+		box-shadow: var(--shadow-lg);
 	}
 
 	header div:hover {
-		box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.25), 0 8px 14px 0 rgba(0, 0, 0, 0.22);
+		box-shadow: var(--shadow-lg);
 	}
 }
 
@@ -264,7 +321,7 @@ h1 {
 	body > div {
 		width: 100%;
 		margin: 0;
-		padding: 10px;
+		padding: var(--spacing-sm);
 		box-sizing: border-box;
 	}
 
@@ -277,11 +334,11 @@ h1 {
 
 	header img {
 		margin-right: 0;
-		margin-bottom: 10px;
+		margin-bottom: var(--spacing-sm);
 	}
 
 	header div {
-		padding: 10px;
+		padding: var(--spacing-sm);
 		box-sizing: border-box;
 	}
 
@@ -302,7 +359,7 @@ h1 {
 	/* Sidebar takes full width and stacks below */
 	aside {
 		margin-left: 0;
-		margin-top: 10px;
+		margin-top: var(--spacing-sm);
 	}
 
 	aside section {
@@ -329,8 +386,8 @@ h1 {
 	#jobs li, #formation li {
 		flex-direction: column;
 		padding-left: 25px;
-		padding-bottom: 15px;
-		margin-bottom: 10px;
+		padding-bottom: var(--spacing-md);
+		margin-bottom: var(--spacing-sm);
 	}
 
 	/* Smaller timeline circle on mobile */
@@ -352,7 +409,7 @@ h1 {
 
 	.mission {
 		width: 100%;
-		margin-bottom: 5px;
+		margin-bottom: var(--spacing-xs);
 		font-weight: bold;
 	}
 
@@ -385,8 +442,8 @@ h1 {
 	}
 
 	body {
-		font-size: 0.8rem;
-		background-color: #ffffff;
+		font-size: var(--font-size-sm);
+		background-color: var(--color-white);
 	}
 
 	/* Ensure 2-column layout prints correctly */
@@ -401,8 +458,8 @@ h1 {
 		padding-left: 25px;
 		flex-direction: row;
 		border-bottom: none;
-		margin-bottom: 5px;
-		padding-bottom: 5px;
+		margin-bottom: var(--spacing-xs);
+		padding-bottom: var(--spacing-xs);
 	}
 
 	/* Timeline circle for print - smaller */
@@ -427,7 +484,7 @@ h1 {
 	}
 
 	.description {
-		margin-left: 10px;
+		margin-left: var(--spacing-sm);
 		overflow-wrap: break-word;
 		word-wrap: break-word;
 	}
@@ -459,10 +516,10 @@ h1 {
 
 	/* Profile image block - keep border, match height with header div */
 	header img {
-		margin-right: 10px;
+		margin-right: var(--spacing-sm);
 		margin-bottom: 0;
-		padding: 5px;
-		border: 1px solid #cccccc;
+		padding: var(--spacing-xs);
+		border: var(--border-width) solid #cccccc;
 		box-sizing: border-box;
 		width: auto;
 		max-width: 180px;
@@ -474,7 +531,7 @@ h1 {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding: 10px 20px;
+		padding: var(--spacing-sm) var(--spacing-lg);
 	}
 
 	/* Restore 2-column layout for print - align both columns */
@@ -488,7 +545,7 @@ h1 {
 	}
 
 	aside {
-		margin-left: 10px;
+		margin-left: var(--spacing-sm);
 		margin-top: 0 !important;
 		padding-top: 0;
 	}
@@ -496,7 +553,7 @@ h1 {
 	/* Both first sections should have identical margin */
 	#main section:first-child,
 	aside section:first-child {
-		margin-top: 10px !important;
+		margin-top: var(--spacing-sm) !important;
 	}
 
 	/* Restore footer layout for print */
@@ -505,7 +562,7 @@ h1 {
 	}
 
 	footer > div {
-		margin-right: 10px;
+		margin-right: var(--spacing-sm);
 	}
 
 	/* ==========================================
@@ -579,11 +636,11 @@ h1 {
 	   PRINT INK SAVING - Use lighter blue for backgrounds
 	   ========================================== */
 
-	/* Replace Bleu Nuit (#001B3D) with Bleu Médium (#007DA5) for print */
+	/* Replace Bleu Nuit with Bleu Médium for print (ink saving) */
 	header div,
 	aside section,
 	footer > div,
 	footer section {
-		background-color: #007DA5 !important;
+		background-color: var(--color-print-background) !important;
 	}
 }

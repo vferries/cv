@@ -83,9 +83,90 @@ const data = {
 ### CSS
 - **Tabs** for indentation
 - Selectors: lowercase, hyphens when needed
-- Colors: hex values (`#2b5d82`, `#00ccff`)
+- **Use CSS variables** from the design system (see below)
 - Layout: Flexbox
 - Print: `@media print` rules in style.css
+
+## CSS Design System
+
+All styling values are defined as CSS variables in `:root` at the top of `style.css`. **Always use variables instead of hardcoded values.**
+
+### Brand Colors (En Veille)
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--color-primary` | `#001B3D` | Bleu Nuit - dark backgrounds |
+| `--color-accent` | `#00F2FF` | Bleu Électrique - headings, highlights |
+| `--color-secondary` | `#007DA5` | Bleu Médium - borders, timeline |
+| `--color-white` | `#ffffff` | Light backgrounds, text on dark |
+| `--color-background` | `#eeeeee` | Page background |
+
+### Semantic Colors
+
+| Variable | Usage |
+|----------|-------|
+| `--color-text-light` | Text on dark backgrounds |
+| `--color-text-dark` | Text on light backgrounds |
+| `--color-border` | Section borders |
+| `--color-link` / `--color-link-hover` | Link colors |
+| `--color-print-background` | Lighter background for print (ink saving) |
+
+### Spacing
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--spacing-xs` | `5px` | Minimal gaps |
+| `--spacing-sm` | `10px` | Standard gaps, padding |
+| `--spacing-md` | `15px` | Medium gaps |
+| `--spacing-lg` | `20px` | Large gaps |
+| `--spacing-xl` | `30px` | Section spacing |
+
+### Shadows
+
+| Variable | Usage |
+|----------|-------|
+| `--shadow-sm` | Subtle elevation (timeline dots) |
+| `--shadow-md` | Standard cards |
+| `--shadow-lg` | Hover state elevation |
+
+### Layout
+
+| Variable | Value | Usage |
+|----------|-------|-------|
+| `--container-width` | `1000px` | Main container |
+| `--sidebar-width` | `200px` | Aside sections |
+| `--profile-size` | `200px` | Profile photo |
+| `--badge-size` | `30px` | Certification badges |
+
+### Timeline
+
+| Variable | Value |
+|----------|-------|
+| `--timeline-dot-size` | `12px` |
+| `--timeline-line-width` | `2px` |
+
+### Typography
+
+| Variable | Value |
+|----------|-------|
+| `--font-family` | `'Roboto', sans-serif` |
+| `--font-size-base` | `1rem` |
+| `--font-size-sm` | `0.85rem` |
+| `--font-size-lg` | `1.17em` |
+
+### Example Usage
+
+```css
+/* Good - use variables */
+background-color: var(--color-primary);
+padding: var(--spacing-sm);
+box-shadow: var(--shadow-md);
+
+/* Bad - hardcoded values */
+background-color: #001B3D;
+padding: 10px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+```
 
 ### JavaScript
 - **Tabs** for indentation
@@ -126,8 +207,13 @@ const data = {
 
 ### Adding a New Technology
 ```javascript
-// Add to data.personal.technos (level: 1-5 stars)
-{ name: "TechName", level: 4 }
+// Add to data.personal.technos - organized by category
+// Categories: Langages, Mobile, Backend, Cloud/DevOps, Frontend
+technos: {
+    "Langages": ["Java", "Kotlin", "TypeScript"],
+    "Mobile": ["Android", "Flutter"],
+    // ...
+}
 ```
 
 ## Error Handling
