@@ -16,7 +16,7 @@
 	--color-border: var(--color-secondary);
 	--color-link: var(--color-white);
 	--color-link-hover: var(--color-accent);
-	--color-print-background: var(--color-secondary);  /* Lighter ink for print */
+	--color-print-background: var(--color-primary);    /* Navy à l'impression aussi (cohérence marque) */
 
 	/* Spacing */
 	--spacing-xs: 5px;
@@ -568,17 +568,9 @@ h1 {
 		font-size: 14px;
 	}
 
-	/* Brand strip compact en print, encre économisée via simple filet bas */
+	/* Brand strip masquée en print (le CV imprimé suffit, pas besoin du logo de marque) */
 	.brand {
-		padding: 0 0 var(--spacing-xs) 0;
-		margin-bottom: var(--spacing-sm);
-		border-bottom: 1px solid var(--color-secondary);
-		font-size: 0.95rem;
-		color: var(--color-text-dark);
-	}
-	.brand img {
-		width: 28px;
-		height: 28px;
+		display: none !important;
 	}
 
 	/* Restore header layout for print */
@@ -588,16 +580,17 @@ h1 {
 		align-items: stretch;
 	}
 
-	/* Profile image block - keep border, match height with header div */
+	/* Profile image block - ratio 1:1 forcé pour éviter l'étirement par le flex */
 	header img {
 		margin-right: var(--spacing-sm);
 		margin-bottom: 0;
 		padding: var(--spacing-xs);
 		border: var(--border-width) solid #cccccc;
 		box-sizing: border-box;
-		width: auto;
-		max-width: 180px;
-		height: auto;
+		flex-shrink: 0;
+		width: 110px;
+		height: 110px;
+		max-width: none;
 	}
 
 	/* Header div takes remaining space, vertically centered content */
