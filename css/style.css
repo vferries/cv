@@ -26,7 +26,8 @@
 	--spacing-xl: 30px;
 
 	/* Typography */
-	--font-family: 'Roboto', sans-serif;
+	--font-family: 'Inter', system-ui, sans-serif;
+	--font-family-display: 'Fraunces', Georgia, serif;
 	--font-size-base: 1rem;
 	--font-size-sm: 0.85rem;
 	--font-size-lg: 1.17em;
@@ -126,6 +127,11 @@ header h2 {
 	margin: 0;
 	margin-bottom: var(--spacing-md);
 	color: var(--color-accent);
+	font-family: var(--font-family-display);
+	font-style: italic;
+	font-weight: 400;
+	text-transform: none;
+	letter-spacing: 0;
 }
 
 header p {
@@ -247,7 +253,10 @@ footer section {
 }
 
 h1, h2 {
+	font-family: var(--font-family-display);
+	font-weight: 500;
 	text-transform: uppercase;
+	letter-spacing: 0.02em;
 }
 
 
