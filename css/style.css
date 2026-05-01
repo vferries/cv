@@ -101,6 +101,53 @@ img.badge {
 	vertical-align: middle;
 }
 
+/* Brand strip — lien vers enveille.info, identité de marque au-dessus du CV */
+.brand {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-sm) 0;
+	margin-bottom: var(--spacing-sm);
+	color: var(--color-text-dark);
+	text-decoration: none;
+	font-family: var(--font-family-display);
+	font-weight: 500;
+	font-size: 1.125rem;
+	line-height: 1;
+}
+
+.brand img {
+	width: 40px;
+	height: 40px;
+	background: none;
+	border: 0;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+}
+
+.brand__sep {
+	color: var(--color-secondary);
+	font-weight: 400;
+	margin: 0 2px;
+}
+
+.brand__page {
+	color: var(--color-secondary);
+	font-style: italic;
+	font-weight: 400;
+}
+
+@media (hover: hover) {
+	.brand:hover {
+		color: var(--color-text-dark);
+	}
+	.brand:hover img {
+		transform: rotate(360deg);
+		transition: transform 600ms ease;
+	}
+}
+
 header {
 	display: flex;
 	width: 100%;
@@ -334,6 +381,11 @@ h1 {
 		box-sizing: border-box;
 	}
 
+	.brand {
+		font-size: 1rem;
+		justify-content: center;
+	}
+
 	/* Stack header vertically */
 	header {
 		flex-direction: column;
@@ -514,6 +566,19 @@ h1 {
 	/* Smaller stars in technos section */
 	.technos-content .material-icons {
 		font-size: 14px;
+	}
+
+	/* Brand strip compact en print, encre économisée via simple filet bas */
+	.brand {
+		padding: 0 0 var(--spacing-xs) 0;
+		margin-bottom: var(--spacing-sm);
+		border-bottom: 1px solid var(--color-secondary);
+		font-size: 0.95rem;
+		color: var(--color-text-dark);
+	}
+	.brand img {
+		width: 28px;
+		height: 28px;
 	}
 
 	/* Restore header layout for print */
