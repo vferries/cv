@@ -503,7 +503,7 @@ h1 {
 	}
 
 	body {
-		font-size: var(--font-size-sm);
+		font-size: 0.78rem;
 		background-color: var(--color-white);
 	}
 
@@ -580,7 +580,7 @@ h1 {
 		align-items: stretch;
 	}
 
-	/* Profile image block - ratio 1:1 forcé pour éviter l'étirement par le flex */
+	/* Photo : carrée fixe, plus grande qu'un timbre poste mais sans déborder */
 	header img {
 		margin-right: var(--spacing-sm);
 		margin-bottom: 0;
@@ -588,8 +588,8 @@ h1 {
 		border: var(--border-width) solid #cccccc;
 		box-sizing: border-box;
 		flex-shrink: 0;
-		width: 110px;
-		height: 110px;
+		width: 150px;
+		height: 150px;
 		max-width: none;
 	}
 
